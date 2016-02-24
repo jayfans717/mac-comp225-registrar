@@ -12,8 +12,8 @@ public class Course {
 
     private Set<Student> enrolledIn;
     private List<Student> waitlist;
-    private String number;
-    private String name;
+    private String catalogNumber;
+    private String titleName;
     private int limit;
 
     public Course(){
@@ -22,12 +22,12 @@ public class Course {
         limit = 16;
     }
 
-    public void setCatalogNumber(String number){
-        this.number = number;
+    public void setCatalogNumber(String catalogNumber){
+        this.catalogNumber = catalogNumber;
     }
 
-    public void setTitle(String title){
-        this.name = title;
+    public void setTitle(String titleName){
+        this.titleName = titleName;
     }
 
     public int getEnrollmentLimit(){

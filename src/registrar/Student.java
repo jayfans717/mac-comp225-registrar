@@ -9,15 +9,15 @@ import java.util.Set;
  */
 public class Student {
 
-    public String name;
+    public String studentName;
     public Set<Course> enrolledIn;
 
     public Student(){
         enrolledIn = new HashSet<>();
     }
 
-    public void setName(String name){
-        this.name = name;
+    public void setName(String studentName){
+        this.studentName = studentName;
     }
 
     public Set<Course> getCourses(){
