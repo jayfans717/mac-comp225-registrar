@@ -21,13 +21,14 @@ public class RegistrarTest {
 
     private TestObjectFactory factory = new TestObjectFactory();
     private Course comp225, math6, basketWeaving101;
-    private Student sally, fred, zongo;
+    private Student sally, fred, zongo, eva;
 
     @Before
     public void createStudents() {
         sally = factory.makeStudent("Sally");
         fred  = factory.makeStudent("Fred");
         zongo = factory.makeStudent("Zongo Jr.");
+        eva=factory.makeStudent("Eva");
     }
 
     @Before
@@ -67,8 +68,8 @@ public class RegistrarTest {
 
     @Test
     public void coursesHaveEnrollmentLimits() {
-        comp225.setEnrollmentLimit(16);
-        assertEquals(16, comp225.getEnrollmentLimit());
+        comp225.setEnrollmentLimit(16.0);
+        assertEquals(16.0, comp225.getEnrollmentLimit());
     }
 
     @Test
@@ -86,6 +87,18 @@ public class RegistrarTest {
         assertEquals(list(sally), comp225.getWaitList());
         assertFalse(comp225.getStudents().contains(sally));
     }
+
+
+    @Test
+    public void acceptingPastLimit() {
+        factory.enrollMultipleStudents(comp225, 16);
+        comp225.removeEnrollmentLimit();
+        assertTrue(eva.enrollIn(comp225));
+        assertEquals(list(), comp225.getWaitList());
+        assertTrue(comp225.getStudents().contains(eva));
+    }
+
+
 
     @Test
     public void waitListPreservesEnrollmentOrder() {
